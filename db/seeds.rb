@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+Article.destroy_all
+10.times do
+  p "Starting seeding"
+  article = Article.new(
+    title: Faker::Quote.famous_last_words,
+    content: Faker::Quotes::Shakespeare.hamlet_quote
+  )
+  article.save
+end
